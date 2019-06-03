@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata: 
+  name: node-hello-world
+spec: 
+  replicas: 2
+  template: 
+    metadata: 
+      labels: #labels to select/identify the deployment
+        app: node-hello-world
+    spec: #pod spec
+      containers: 
+      - name: node-hello-world
+        image: raghavendrankr/node_app:v1
+        ports: 
+        - containerPort: 3000
+
+      
