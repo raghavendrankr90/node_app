@@ -1,6 +1,7 @@
 
 # Notes
 
+```markdown
 brew tap caskroom/cask
 Installing Docker for Mac
 brew cask install/upgrade virtualbox
@@ -12,8 +13,11 @@ brew cask install minikube
 minikube start
 Tip: Use 'minikube start -p `name`' to create a new cluster, or 'minikube delete' to delete this one.
 kubectl api-versions
+```
 
 ## Setting up node environment
+
+```markdown
 
 brew install node
 node -v
@@ -28,9 +32,11 @@ index.js is the source file which triggers the actual implementation of the what
 npm install
 npm run start
 access the application on port you started the app on`3000`
+```
 
 ## Making the application Docker Ready
 
+```markdown
 Write the Dockerfile  for the application as applicable
 docker build -t "node_app" .
 docker run -d -p 4200:3000 node_app (access the app on port mapped i.e., 4200)
@@ -38,9 +44,11 @@ docker stop `conatiner_id`
 docker tag node_app raghavendrankr/node_app:v1
 docker login —username=raghavendrankr —password=plaintext or cat ~/mypass.txt | docker login —username=raghavendrankr —password-stdin
 docker push raghavendrankr/node_app:v1
+```
 
 ## Writing deployment template for K8s
 
+```markdown
 deployment.yml
 kubectl create -f deployment.yml --save-config
 kubectl get deployments
@@ -53,9 +61,11 @@ kubectl describe services `to list all the services, take LoadBalancer Ingress c
 As we are using cutom kubernetes cluster `like minkube, kubeadm` there is no load-balancer integrated unlike AWS or GoogleCloud.
 minikube service node-hello-world `to open service in your default browser`
 We can manually form the url from taking IP`Endpoints:` from kubectl describe service and port `NodePort:`
+```
 
 ## Cleaning up
 
+```markdown
 kubectl get service
 kubectl delete services `node-hello-world`
 kubectl get deployments
@@ -68,3 +78,4 @@ minikube delete
 rm -rf ~/minikube ~/.kube
 brew uninstall kubectl
 brew cask uninstall docker virtualmachine minikube
+```
